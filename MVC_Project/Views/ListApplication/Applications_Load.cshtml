@@ -1,0 +1,61 @@
+﻿@model MVC_Project.Models.ListApplicn
+@{
+    ViewBag.Title = "Applications_Load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #cards {
+        padding: 15px;
+    }
+
+    .row {
+        padding: 5px;
+    }
+</style>
+<h2>Applications</h2>
+<hr />
+@using (Html.BeginForm("Applications_Load", "ListApplications", FormMethod.Get))
+{
+    if (Model != null)
+    {
+        if (Model.ViewUser != null && Model.ViewUser.Count != 0)
+        {
+            foreach (var item in Model.ViewUser)
+            {
+                <div id="cards" class="row mb-4">
+                    <div class="col-md-4 mb-4">
+                        <div id="cards" class="card" style="width: 800px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+                            <div class="card-body" align="center">
+                                <h3 class="card-title">
+                                    <b>
+                                        @Html.DisplayFor(modelitem => item.name)
+                                    </b>
+                                </h3>
+                                <h6 class="card-title">
+                                    @Html.DisplayFor(modelitem => item.email)
+                                </h6>
+                                <p class="card-text">
+                                    Applied for @Html.DisplayFor(modelitem => item.ViewJobName) in @Html.DisplayFor(modelitem => item.ViewJobLocation).
+                                </p>
+                                @Html.ActionLink("View More", "#", "#")
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+
+        }
+        else
+        {
+            <script>
+                alert("Nobody has applied for any jobs yet.");
+            </script>
+        }
+    }
+}
+<div id="cards">
+    @Html.ActionLink("Back to Home", "CompanyHome", "Profile")
+</div>
+

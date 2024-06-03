@@ -1,0 +1,63 @@
+﻿@model MVC_Project.Models.CompanyProfile
+@{
+    ViewBag.Title = "CompanyHome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #cards {
+        padding: 15px;
+    }
+
+    .row {
+        padding: 5px;
+    }
+</style>
+<h2>Welcome  to Job Portal</h2>
+<hr />
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-4 mb-4">
+            <div class="mx-2">
+                <div id="cards" class="card" style="width: 400px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+                    <div class="card-body" align="center">
+                        <h4 class="card-title"><b>Post Job</b></h4>
+                        <p class="card-text">
+                            Create and post jobs here.
+                        </p>
+                        @Html.ActionLink("Post a Job", "AddJob_Load", "AddJobs", "", new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-4">
+            <div class="mx-2">
+                <div id="cards" class="card" style="width: 400px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+                    <div class="card-body" align="center">
+                        <h4 class="card-title"><b>View your jobs</b></h4>
+                        <p class="card-text">
+                            Check jobs you have posted.
+                        </p>
+                        @Html.ActionLink("View", "ViewPostedJobs_Load", "ViewPostedJobs", "", new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-4 mb-4">
+            <div class="mx-2">
+                <div id="cards" class="card" style="width: 400px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+                    <div class="card-body" align="center">
+                        <h4 class="card-title"><b>Check applied jobs</b></h4>
+                        <p class="card-text">
+                            Check list of employees who have applied for your jobs.
+                        </p>
+                        @Html.ActionLink("View", "Applications_Load", "ListApplications", "", new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

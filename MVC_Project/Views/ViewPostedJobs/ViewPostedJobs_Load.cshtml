@@ -1,0 +1,113 @@
+﻿@model MVC_Project.Models.ViewPostedJobs
+@{
+    ViewBag.Title = "ViewPostedJobs_Load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    th, td {
+        padding: 5px;
+    }
+
+    #cards {
+        padding: 15px;
+    }
+</style>
+<h2>Posted Jobs</h2>
+<hr />
+
+@using (Html.BeginForm("ViewPosteddJobs_Load", "ViewPostedJobsJobs", FormMethod.Get))
+{
+    if (Model != null)
+    {
+        if (Model.ViewJob != null && Model.ViewJob.Count != 0)
+        {
+            <div id="cards" class="card" style="width: 1200px; border-radius: 15px; background-color: rgb(47 57 71); color: white;">
+                <h4 class="card card-title" align="left">Job List</h4>
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            <label>Role</label>
+                        </th>
+                        <th>
+                            <label>Vacancies</label>
+                        </th>
+                        <th>
+                            <label>Required Skills</label>
+                        </th>
+                        <th>
+                            <label>Experience</label>
+                        </th>
+                        <th>
+                            <label>Qualification</label>
+                        </th>
+                        <th>
+                            <label>Salary</label>
+                        </th>
+                        <th>
+                            <label>Job Location</label>
+                        </th>
+                        <th>
+                            <label>Starting Date</label>
+                        </th>
+                        <th>
+                            <label>Closing Date</label>
+                        </th>
+                        <th>
+                            <label>Status</label>
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model.ViewJob)
+                    {
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.View_JobName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.View_Vacancy)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelitem => item.View_RequiredSkill)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.View_Experience)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.View_Qualification)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.View_Salary)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.View_Location)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.View_StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.View_EndDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.View_Status)
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        }
+        else
+        {
+            <script>
+                alert("You have not posted any jobs yet.");
+            </script>
+
+        }
+    }
+}
+<div id="cards">
+    @Html.ActionLink("Back to Home", "CompanyHome", "Profile")
+</div>
